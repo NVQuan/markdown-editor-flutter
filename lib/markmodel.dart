@@ -1,7 +1,7 @@
 import 'package:scoped_model/scoped_model.dart';
 
 class MarkModel extends Model {
-  String _markText = "";
+  String _markText = "# Edit Markdown...";
 
   String get text => _markText;
 
