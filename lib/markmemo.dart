@@ -1,49 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:flutter_html_view/flutter_html_view.dart';
-import 'package:markdown/markdown.dart';
+import 'package:markmemo/markmodel.dart';
+import 'package:markmemo/markinput.dart';
+import 'package:markmemo/markpreview.dart';
+import 'package:scoped_model/scoped_model.dart';
 
-class RandomWords extends StatefulWidget {
-  @override
-  RandomWordsState createState() => new RandomWordsState();
-}
 
-class RandomWordsState extends State<RandomWords> {
-  final _markdownCtr = TextEditingController();
-  var _markText = "";
+class MarkMemo extends StatelessWidget {
+  final MarkModel _model;
 
-  @override
-  void dispose() {
-    // Clean up the controller when the Widget is disposed
-    _markdownCtr.dispose();
-    super.dispose();
-  }
+  MarkMemo(this._model);
 
   @override
   Widget build(BuildContext context) {
     
-    return new Row(
-      children: <Widget>[
-        new Expanded(
-          child: new TextField(
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Please enter a search term'),
-            controller: _markdownCtr,
-            keyboardType: TextInputType.multiline,
-            maxLines: null,
-            onChanged: (String e) {
-              setState(() {
-                _markText = e;
-              });
-            },
+    return new ScopedModel<MarkModel>(
+      model: _model,
+      child: new Row(
+        children: <Widget>[
+          new Expanded(
+            child: new MarkInput()
           ),
-        ),
-        new SingleChildScrollView(
-          // child: new HtmlView(data: markdownToHtml(_markText, extensionSet: ExtensionSet.gitHubWeb)),
-          child: new HtmlView(data: markdownToHtml(_markText, extensionSet: ExtensionSet.gitHubWeb)),
-        ),
-      ],
+          new MarkPreview(),
+        ],
+      )
     );
   }
 }

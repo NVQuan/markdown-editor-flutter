@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'markmodel.dart';
-import 'markmemo.dart';
-import 'package:scoped_model/scoped_model.dart';
+import 'package:markmemo/markmodel.dart';
+import 'package:markmemo/markmemo.dart';
 
-void main() => runApp(new MyApp(MarkModel()));
+void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
-  final MarkModel model;
-
-  MyApp(this.model);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,10 +15,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           // child: Text('Hello World'),
-          child: ScopedModel<MarkModel>(
-            model: model,
-            child: new RandomWords()
-          ),
+          child: new MarkMemo(MarkModel()),
         ),
       ),
     );
