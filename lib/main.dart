@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:markmemo/markmodel.dart';
 import 'package:markmemo/markmemo.dart';
+import 'package:markmemo/filelist.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new FileApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Markmemo with Flutter',
       home: Center(
         // child: Text('Hello World'),
-        child: new MarkMemo(MarkModel(), 'Title!!!!!!'),
+        child: new MarkMemo(model: MarkModel(null), title: 'Title!!!!!!'),
       ),
     );
   }

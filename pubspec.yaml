@@ -14,6 +14,7 @@ dependencies:
   flutter_markdown: any
   flutter_html_view: any
   scoped_model: any
+  path_provider: any
 
 dev_dependencies:
   flutter_test:

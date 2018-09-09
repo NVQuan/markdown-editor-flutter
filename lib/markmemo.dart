@@ -6,20 +6,20 @@ import 'package:markmemo/htmlpreview.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class MarkMemo extends StatelessWidget {
-  final MarkModel _model;
-  final String _title;
+  final MarkModel model;
+  final String title;
 
-  MarkMemo(this._model, this._title);
+  MarkMemo({Key key, this.model, this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return new ScopedModel<MarkModel>(
-        model: _model,
+        model: model,
         child: DefaultTabController(
           length: 3,
           child: Scaffold(
             appBar: AppBar(
-              title: Text(_title),
+              title: Text(title),
             ),
             body: TabBarView(
               children: [

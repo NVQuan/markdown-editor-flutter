@@ -1,13 +1,22 @@
+import 'dart:io';
+import 'dart:async';
 import 'package:scoped_model/scoped_model.dart';
 
 class MarkModel extends Model {
-  String _markText = "# Edit Markdown...";
+  File _markdownFile;
+  String fileTxt = "";
 
-  String get text => _markText;
+  MarkModel(this._markdownFile);
+
+  void readFile() {
+    fileTxt = _markdownFile.readAsStringSync();
+  }
+
+  String get text => fileTxt;
 
   set text(String str) {
-    _markText = str;
-    //状態を変更したらnotifyListenersを呼ぶ。
+    fileTxt = str;
+    _markdownFile.writeAsString(fileTxt);
     notifyListeners();
   }
 }
