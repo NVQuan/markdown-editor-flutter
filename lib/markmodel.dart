@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:async';
 import 'package:scoped_model/scoped_model.dart';
 
 class MarkModel extends Model {
